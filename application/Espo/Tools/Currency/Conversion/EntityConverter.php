@@ -30,6 +30,8 @@
 namespace Espo\Tools\Currency\Conversion;
 
 use Espo\Core\Currency\Rates;
+use Espo\Core\Exceptions\BadRequest;
+use Espo\Core\Exceptions\Conflict;
 use Espo\Core\Exceptions\Forbidden;
 use Espo\ORM\Entity;
 
@@ -43,6 +45,8 @@ interface EntityConverter
     /**
      * @param TEntity $entity
      * @throws Forbidden
+     * @throws BadRequest
+     * @throws Conflict
      */
     public function convert(Entity $entity, string $targetCurrency, Rates $rates): void;
 }

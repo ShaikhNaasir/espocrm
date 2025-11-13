@@ -600,6 +600,15 @@
                                         ]
                                     }
                                 }
+                            },
+                            {
+                                "properties": {
+                                    "type": {
+                                        "anyOf": [
+                                            {"const": "decimal"}
+                                        ]
+                                    }
+                                }
                             }
                         ]
                     },
@@ -731,6 +740,28 @@
                             "autocompleteOnEmpty": {
                                 "type": "boolean",
                                 "description": "Autocomplete on empty input."
+                            }
+                        }
+                    }
+                },
+                {
+                    "if": {
+                        "properties": {
+                            "type": {
+                                "anyOf": [
+                                    {"const": "linkParent"}
+                                ]
+                            }
+                        }
+                    },
+                    "then": {
+                        "properties": {
+                            "entityList": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                },
+                                "description": "Entity types supported by the link."
                             }
                         }
                     }

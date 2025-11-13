@@ -34,8 +34,23 @@ use Espo\Core\Utils\Metadata;
 
 class InternalConfigHelper
 {
+    /** @var string[]  */
+    private array $stateParamList = [
+        'appTimestamp',
+        'cacheTimestamp',
+        'version',
+        'latestVersion',
+        'latestExtensionVersions',
+        'currencyRates',
+    ];
+
     public function __construct(private Config $config, private Metadata $metadata)
     {}
+
+    public function isParamForStateConfig(string $name): bool
+    {
+        return in_array($name, $this->stateParamList);
+    }
 
     public function isParamForInternalConfig(string $name): bool
     {
